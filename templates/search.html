@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>
+        Nomad Final Challenge
+    </title>
+    <link href="../static/style/mvp.css" rel="stylesheet"/>
+</head>
+<body>
+    <header>
+        <h1>Remote Jobs</h1>
+        <h3>{{length}} {{name}} jobs found.</h3>
+        <h5><a href="/export?job_name={{name}}">Export to CSV</a></h5>
+        <h6><a href="/">&larr; Go back</a></h6>
+    </header>
+    <main>
+        {% for job in job_list %}
+        <div>
+            <h3>{{job.get('title')}}</h3>
+            <h4>{{job.get('company')}}</h4>
+            <a href="{{job.get('link')}}" target="_blank">Apply</a>
+        </div>
+        <hr />
+        {% endfor %}
+    </main>
+</body>
+</html>

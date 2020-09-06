@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link href="../static/style/mvp.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">
+                <img alt="Logo" src="https://via.placeholder.com/200x70?text=Logo" height="70">
+            </a>
+            <ul>
+                {% if order == 'popular' %}
+                    <li>Popular</li>
+                    <li><a href="/?order_by=new">New</a></li>
+                {% else %}
+                    <li><a href="/?order_by=popular">Popular</a></li>
+                    <li>New</li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            {% for item in list %}
+                <aside>
+                    <p>
+                        <a href="/{{ item['object_id'] }}">{{ item['title'] }}</a>
+                    </p>
+                    <p>
+                        {{ item['points'] }} points
+                    </p>
+                    <p>
+                        Author: {{ item['author'] }}
+                    </p>
+                    <p>
+                        {{ item['num_comments'] }} comments
+                    </p>
+                    <p>
+                        <a href="{{ item['url'] }}" target="_blank">기사 직접 보기</a>
+                    </p>
+                </aside>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

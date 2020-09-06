@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link href="../static/style/mvp.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Comment</title>
+</head>
+<body>
+    <header>
+        <h1>{{ comment.title }}</h1>
+        <div>
+            {{ comment.points }} points | By {{ comment.author }} | <a href="{{ comment.url }}" target="_blank">{{ comment.url }}</a>
+        </div>
+    </header>
+    <main>
+        {% for comment in comment.children %}
+        <div>
+            {% if comment.author == None%}
+                <p>deleted Comment</p>
+            {% else %}
+                <strong>{{comment.author}}:</strong>
+                <p>{{comment.text | safe}}</p>
+            {% endif %}
+        </div>
+        <hr />
+        {% endfor %}
+    </main>
+</body>
+</html>

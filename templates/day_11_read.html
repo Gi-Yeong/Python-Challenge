@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link href="../static/style/mvp.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <header>
+        <h1><a href="/">Reddit Reader</a></h1>
+        <h3>Reading:
+            {% for search in search_list %}
+            r/{{ search }}
+            {% endfor %}
+        </h3>
+    </header>
+    <main>
+        {% for result in result_list %}
+        <div>
+            <h3>
+                <a href="{{ result[2] }}" target="_blank">{{ result[1] }}</a>
+            </h3>
+            <h4>{{ result[0] }} upvotes · {{ result[3] }}</h4>
+            <hr />
+        </div>
+        {% endfor %}
+    </main>
+</body>
+</html>
